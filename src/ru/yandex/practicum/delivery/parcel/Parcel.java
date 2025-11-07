@@ -1,4 +1,4 @@
-package ru.yandex.practicum.delivery;
+package ru.yandex.practicum.delivery.parcel;
 
 public abstract class Parcel {
     private final String description;
@@ -31,5 +31,9 @@ public abstract class Parcel {
 
     public String getDescription() {
         return description;
+    }
+
+    public byte getSendDay() {
+        return sendDay;
     }
 }

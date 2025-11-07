@@ -1,5 +1,10 @@
 package ru.yandex.practicum.delivery;
 
+import ru.yandex.practicum.delivery.parcel.FragileParcel;
+import ru.yandex.practicum.delivery.parcel.Parcel;
+import ru.yandex.practicum.delivery.parcel.PerishableParcel;
+import ru.yandex.practicum.delivery.parcel.StandardParcel;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,6 +51,31 @@ public class DeliveryApp {
 
     private static void addParcel() {
         // Подсказка: спросите тип посылки и необходимые поля, создайте объект и добавьте в allParcels
+        System.out.println("Выберите тип посылки: 1 - Обычная, 2 - Скоропортящаяся, 3 - Хрупкая.");
+        int type = Integer.parseInt(scanner.nextLine());
+        System.out.println("Укажите описание посылки:");
+        String description = scanner.nextLine();
+        System.out.println("Укажите вес посылки:");
+        int weight = Integer.parseInt(scanner.nextLine());
+        System.out.println("Укажите адрес доставки:");
+        String deliveryAddress = scanner.nextLine();
+        System.out.println("Укажите сегодняшнюю дату:");
+        byte sendDay = Byte.parseByte(scanner.nextLine());
+
+        if (type == 1) {
+            StandardParcel parcel = new StandardParcel(description, weight, deliveryAddress, sendDay);
+            allParcels.add(parcel);
+        } else if (type == 2) {
+            System.out.println("Укажите срок годности в днях:");
+            byte timeToLive = Byte.parseByte(scanner.nextLine());
+            PerishableParcel parcel = new PerishableParcel(description, weight, deliveryAddress, sendDay, timeToLive);
+            allParcels.add(parcel);
+        } else if (type == 3) {
+            FragileParcel parcel = new FragileParcel(description, weight, deliveryAddress, sendDay);
+            allParcels.add(parcel);
+        }
+
+        System.out.println("Посылка: " + allParcels.getLast().toString() + " добавлена,");
     }
 
     private static void sendParcels() {
