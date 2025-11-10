@@ -2,7 +2,7 @@ package ru.yandex.practicum.delivery.parcel;
 
 public class StandardParcel extends Parcel {
 
-    private static final int deliveryCostModifier = 2;
+    private static final int DELIVERY_COST_MODIFIER = 2;
 
     public StandardParcel(String description, int weight, String deliveryAddress, int sendDay) {
         super(description, weight, deliveryAddress, sendDay);
@@ -10,7 +10,7 @@ public class StandardParcel extends Parcel {
 
     @Override
     public int getDeliveryCostModifier() {
-        return deliveryCostModifier;
+        return DELIVERY_COST_MODIFIER;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class StandardParcel extends Parcel {
                 ", weight=" + getWeight() +
                 ", deliveryAddress='" + getDeliveryAddress() + '\'' +
                 ", sendDay=" + getSendDay() + '\'' +
-                ", deliveryCostModifier=" + deliveryCostModifier + '\'' +
+                ", deliveryCostModifier=" + DELIVERY_COST_MODIFIER + '\'' +
                 '}';
     }
 
