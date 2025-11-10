@@ -5,9 +5,9 @@ import java.util.Objects;
 public class PerishableParcel extends Parcel {
 
     private static final int deliveryCostModifier = 3;
-    private final byte timeToLive;
+    private final int timeToLive;
 
-    public PerishableParcel (String description, int weight, String deliveryAddress, byte sendDay, byte timeToLive) {
+    public PerishableParcel (String description, int weight, String deliveryAddress, int sendDay, int timeToLive) {
         super(description, weight, deliveryAddress, sendDay);
         this.timeToLive = timeToLive;
     }
