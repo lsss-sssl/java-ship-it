@@ -1,6 +1,6 @@
 package ru.yandex.practicum.delivery.parcel;
 
-public final class StandardParcel extends Parcel {
+public class StandardParcel extends Parcel {
 
     private static final int deliveryCostModifier = 2;
 
@@ -13,5 +13,24 @@ public final class StandardParcel extends Parcel {
         return deliveryCostModifier;
     }
 
+    @Override
+    public String toString() {
+        return "StandardParcel{" +
+                "description='" + getDescription() + '\'' +
+                ", weight=" + getWeight() +
+                ", deliveryAddress='" + getDeliveryAddress() + '\'' +
+                ", sendDay=" + getSendDay() + '\'' +
+                ", deliveryCostModifier=" + deliveryCostModifier + '\'' +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

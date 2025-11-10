@@ -1,5 +1,7 @@
 package ru.yandex.practicum.delivery.parcel;
 
+import java.util.Objects;
+
 public class PerishableParcel extends Parcel {
 
     private static final int deliveryCostModifier = 3;
@@ -15,8 +17,32 @@ public class PerishableParcel extends Parcel {
         return deliveryCostModifier;
     }
 
-    public boolean isExpired() {
-        return getSendDay() + timeToLive < 0;
+    public boolean isExpired(int currentDay) {
+        return getSendDay() + timeToLive < currentDay;
     }
 
+    @Override
+    public String toString() {
+        return "PerishableParcel{" +
+                "description='" + getDescription() + '\'' +
+                ", weight=" + getWeight() +
+                ", deliveryAddress='" + getDeliveryAddress() + '\'' +
+                ", sendDay=" + getSendDay() + '\'' +
+                ", deliveryCostModifier=" + deliveryCostModifier + '\'' +
+                ", timeToLive=" + timeToLive + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PerishableParcel that = (PerishableParcel) o;
+        return timeToLive == that.timeToLive;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), timeToLive);
+    }
 }
